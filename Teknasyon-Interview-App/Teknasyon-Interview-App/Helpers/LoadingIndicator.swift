@@ -15,7 +15,7 @@ class LoadingIndicator {
         let indicator = UIActivityIndicatorView(style: .medium)
         indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.hidesWhenStopped = true
-        indicator.color = .systemBlue
+        indicator.color = .systemIndigo
         return indicator
     }()
 

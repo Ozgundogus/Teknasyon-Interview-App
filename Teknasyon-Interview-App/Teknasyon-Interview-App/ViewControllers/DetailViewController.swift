@@ -29,7 +29,7 @@ class DetailViewController: UIViewController {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -39,7 +39,7 @@ class DetailViewController: UIViewController {
     
     private let yearLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -49,7 +49,7 @@ class DetailViewController: UIViewController {
     
     private let imdbIDLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -59,7 +59,7 @@ class DetailViewController: UIViewController {
     
     private let typeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -103,8 +103,8 @@ class DetailViewController: UIViewController {
         stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
-        imageView.widthAnchor.constraint(equalToConstant: 350).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 450).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 400).isActive = true
         
         titleLabel.text = movie?.title
         yearLabel.text = "Year: \(movie?.year ?? "")"
@@ -114,35 +114,8 @@ class DetailViewController: UIViewController {
         loadImage()
     }
     
-    
-    private func configureLabels() {
-           
-            view.addSubview(stackView)
-
-            
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-
-            titleLabel.text = movie?.title
-            yearLabel.text = "Year: \(movie?.year ?? "")"
-            imdbIDLabel.text = "IMDB ID: \(movie?.imdbID ?? "")"
-            typeLabel.text = "Type: \(movie?.type ?? "")"
-        }
-
-    private func configureImageView() {
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.widthAnchor.constraint(equalToConstant: 350).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 250).isActive = true
-
-        view.addSubview(imageView)
-
-    
-        imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
    
-        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
-
-        loadImage()
-    }
+  
     private func startIndicator (){
         loadingIndicator.show()
     }
