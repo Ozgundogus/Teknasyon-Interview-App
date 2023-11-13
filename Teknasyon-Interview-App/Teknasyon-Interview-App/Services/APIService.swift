@@ -29,7 +29,7 @@ class APIManager {
         if let url = URL(string: urlString) {
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let error = error {
-                    completion(.failure(.networkError(NSError())))
+                    completion(.failure(.networkError(error)))
                     return
                 }
 
@@ -67,7 +67,7 @@ class APIManager {
         if let url = URL(string: urlString) {
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let error = error {
-                    completion(.failure(.networkError(NSError())))
+                    completion(.failure(.networkError(error)))
                     return
                 }
 
