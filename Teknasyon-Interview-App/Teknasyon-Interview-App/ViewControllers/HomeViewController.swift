@@ -13,9 +13,7 @@ class HomeViewController: UIViewController {
     
     private var currentPage: Int = 1
     private var totalMovies: Int = 0
-    private let moviesPerPage: Int = 10
-    
-    
+
  
     private var movies: [Movie] = [] {
         didSet {
@@ -198,8 +196,8 @@ extension HomeViewController: UITableViewDataSource {
           let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath)
           let movie = movies[indexPath.row]
           cell.textLabel?.text = movie.title
+        
 
-    
           APIManager.shared.fetchImage(for: movie.poster) { result in
               switch result {
               case .success(let imageData):
@@ -224,12 +222,22 @@ extension HomeViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.contentView.backgroundColor = .systemRed.withAlphaComponent(0.4)
+              }
+        
         if let navigationController = navigationController {
             let detailViewController = DetailViewController()
             detailViewController.movie = movies[indexPath.row]
             navigationController.pushViewController(detailViewController, animated: true)
         }
     }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.contentView.backgroundColor = .white
+            }
+        }
 
 }
 
