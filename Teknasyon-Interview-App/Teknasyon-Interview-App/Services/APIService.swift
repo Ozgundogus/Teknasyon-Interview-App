@@ -7,25 +7,35 @@
 
 import Foundation
 
+
+
+enum APIError: Error {
+    case networkError(Error)
+    case dataNotFound
+    case decodingError(Error)
+}
+
+
+
 class APIManager {
     static let shared = APIManager()
 
     private init() {}
 
-    func performSearch(with searchTerm: String, completion: @escaping (Result<[Movie], Error>) -> Void) {
-        let apiKey = "61d8762c"
-        let urlString = "https://www.omdbapi.com/?apikey=\(apiKey)&s=\(searchTerm)"
+    func performSearch(with searchTerm: String, completion: @escaping (Result<[Movie], APIError>) -> Void) {
+        
+        let urlString = "\(APIConstants.baseURL)?apikey=\(APIConstants.apiKey)&s=\(searchTerm)"
 
         if let url = URL(string: urlString) {
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let error = error {
-                    completion(.failure(error))
+                    completion(.failure(.networkError(NSError())))
                     return
                 }
 
                 guard let data = data else {
                     let dataError = NSError(domain: "APIManagerError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Veri bulunamadı"])
-                    completion(.failure(dataError))
+                    completion(.failure(.dataNotFound))
                     return
                 }
 
@@ -41,7 +51,7 @@ class APIManager {
                 } catch let error {
                    
                     DispatchQueue.main.async {
-                        completion(.failure(error))
+                        completion(.failure(.decodingError(error)))
                     }
                 }
             }
@@ -50,20 +60,20 @@ class APIManager {
         }
     }
     
-    func fetchMovies(page: Int, filter: String, completion: @escaping (Result<[Movie], Error>) -> Void) {
-        let apiKey = "61d8762c"
-        let urlString = "https://www.omdbapi.com/?apikey=\(apiKey)&s=\(filter)&page=\(page)"
-
+    func fetchMovies(page: Int, filter: String, completion: @escaping (Result<[Movie], APIError>) -> Void) {
+        
+        let urlString = "\(APIConstants.baseURL)?apikey=\(APIConstants.apiKey)&s=\(filter)&page=\(page)"
+        
         if let url = URL(string: urlString) {
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let error = error {
-                    completion(.failure(error))
+                    completion(.failure(.networkError(NSError())))
                     return
                 }
 
                 guard let data = data else {
                     let dataError = NSError(domain: "APIManagerError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Veri bulunamadı"])
-                    completion(.failure(dataError))
+                    completion(.failure(.dataNotFound))
                     return
                 }
 
@@ -77,7 +87,7 @@ class APIManager {
                     }
                 } catch let error {
                     DispatchQueue.main.async {
-                        completion(.failure(error))
+                        completion(.failure(.decodingError(error)))
                     }
                 }
             }
@@ -87,17 +97,17 @@ class APIManager {
     }
 
 
-    func fetchImage(for urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
+    func fetchImage(for urlString: String, completion: @escaping (Result<Data, APIError>) -> Void) {
         if let url = URL(string: urlString) {
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if let error = error {
-                    completion(.failure(error))
+                    completion(.failure(.networkError(error)))
                     return
                 }
 
                 guard let data = data else {
                     let dataError = NSError(domain: "APIManagerError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Veri bulunamadı"])
-                    completion(.failure(dataError))
+                    completion(.failure(.dataNotFound))
                     return
                 }
 

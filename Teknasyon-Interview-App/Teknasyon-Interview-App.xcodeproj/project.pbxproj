@@ -20,6 +20,7 @@
 		0C67DF4E2AFE6A4300398504 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C67DF4D2AFE6A4300398504 /* MovieTableViewCell.swift */; };
 		0C67DF542B012A6600398504 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C67DF532B012A6600398504 /* ImageCache.swift */; };
 		0C67DF572B0153DB00398504 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C67DF562B0153DB00398504 /* LoadingIndicator.swift */; };
+		0CCCBF902B0208A1007D554F /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCCBF8F2B0208A1007D554F /* APIConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		0C67DF4D2AFE6A4300398504 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		0C67DF532B012A6600398504 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		0C67DF562B0153DB00398504 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		0CCCBF8F2B0208A1007D554F /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,11 +72,11 @@
 		0C3900CD2AFD5BE1005C6EBF /* Teknasyon-Interview-App */ = {
 			isa = PBXGroup;
 			children = (
+				0CCCBF8D2B0207D3007D554F /* Utilities */,
 				0C67DF522B012A5700398504 /* Helpers */,
 				0C67DF4A2AFE611A00398504 /* Views */,
 				0C3900E82AFD5E0A005C6EBF /* Services */,
 				0C3900E72AFD5E04005C6EBF /* Models */,
-				0C3900E62AFD5DF9005C6EBF /* Extensions */,
 				0C3900E42AFD5DEB005C6EBF /* ViewControllers */,
 				0C3900E32AFD5DDC005C6EBF /* Resources */,
 				0C3900E22AFD5DC7005C6EBF /* Assets */,
@@ -146,10 +148,27 @@
 		0C67DF522B012A5700398504 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0CCCBF8E2B02087A007D554F /* Constants */,
 				0C67DF532B012A6600398504 /* ImageCache.swift */,
 				0C67DF562B0153DB00398504 /* LoadingIndicator.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0CCCBF8D2B0207D3007D554F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0C3900E62AFD5DF9005C6EBF /* Extensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		0CCCBF8E2B02087A007D554F /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				0CCCBF8F2B0208A1007D554F /* APIConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +249,7 @@
 				0C67DF4E2AFE6A4300398504 /* MovieTableViewCell.swift in Sources */,
 				0C3900CF2AFD5BE1005C6EBF /* AppDelegate.swift in Sources */,
 				0C3900EE2AFD62DF005C6EBF /* UIStackView+Extensions.swift in Sources */,
+				0CCCBF902B0208A1007D554F /* APIConstants.swift in Sources */,
 				0C3900D12AFD5BE1005C6EBF /* SceneDelegate.swift in Sources */,
 				0C3900F02AFD8101005C6EBF /* APIService.swift in Sources */,
 				0C3900EC2AFD5E7F005C6EBF /* DetailViewController.swift in Sources */,
